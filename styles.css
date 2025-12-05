@@ -1,0 +1,79 @@
+/* Old-book / parchment look */
+:root{
+  --paper:#f6efe3;
+  --ink:#2b220f;
+  --accent:#d7c29a;
+}
+html,body{
+  height:100%;
+  margin:0;
+  background: var(--paper);
+  font-family: 'EB Garamond', 'Libre Baskerville', Georgia, serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+body{
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.01) 50%, rgba(0,0,0,0.02) 100%);
+}
+.wrap{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:4rem 1.5rem;
+}
+.text-wrap{
+  max-width:900px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4), rgba(255,255,255,0.2));
+  padding:3.2rem 3rem;
+  border-radius:8px;
+  box-shadow: 0 8px 30px rgba(3,3,3,0.08);
+  border:1px solid rgba(0,0,0,0.03);
+}
+.lead{
+  margin:0;
+  font-size:20px;
+  line-height:1.85;
+  letter-spacing:0.2px;
+  text-align:justify;
+  text-justify:inter-word;
+  color:var(--ink);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.35), 0 2px 6px rgba(0,0,0,0.04);
+}
+.credit{
+  margin-top:1.2rem;
+  font-size:13px;
+  color: #5a4e3a;
+}
+/* Slightly larger on wider displays */
+@media(min-width:900px){
+  .lead{ font-size:22px; }
+}
+@media(min-width:1400px){
+  .lead{ font-size:24px; }
+}
+
+/* Cursor trail elements */
+.trail{
+  position:fixed;
+  pointer-events:none;
+  border-radius:50%;
+  transform:translate(-50%,-50%) scale(1);
+  mix-blend-mode:multiply;
+  will-change:transform,opacity;
+}
+@keyframes trailFade{
+  from{ opacity:0.95; transform:translate(-50%,-50%) scale(1); }
+  to{ opacity:0; transform:translate(-50%,-50%) scale(2.2); }
+}
+/* subtle paper texture using pseudo-element on body */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image: radial-gradient(circle at 10% 10%, rgba(0,0,0,0.02), transparent 6%), radial-gradient(circle at 80% 40%, rgba(0,0,0,0.015), transparent 8%);
+  opacity:0.9;
+  pointer-events:none;
+}
